@@ -1,0 +1,75 @@
+Ejercicio 1
+Lo importante de este ejercicio es conocer el numero de hijos que tiene un nodo para calcular el grado
+
+int grado = NumHijos(A, n)
+nodo aux = A.hijoIzqd(n)
+while (aux != NODO_NULO): 
+	grado = max (GradoRec(A, aux), grado)
+	aux = A.hermDrch(aux)
+
+return grado
+
+
+numHijos(A, n)
+int nhijos = 0
+nodo aux = A.hijoIzqdo(n)
+while(aux != NODO_NULO): 
+	nhijos ++;
+	aux = A.hermDrch(aux)
+
+return nhijos
+
+Otra opción es el grado por referencia e ir actualizándola que puede ser más fácil de usar
+
+Ejercicio 3
+contra mas abajo del árbol este menor diferencia de altura y menor desequilibrio habrá y contra mas cercano a la raíz o en la propia raíz la diferencia será mayor y el desequilibrio será mayor. 
+
+Calculamos la rama más larga que tenemos en el árbol y la rama mas corta del árbol y hacemos la diferencia entre ambas. La rama más alta la calculamos con la altura del árbol - 1 y la rama mas corta del árbol con la altura mas pequeña del árbol y le resto 1. Mirar dibujo (papel)
+
+int desquilibrio(Agen<T> A)
+	return ((alturaAgen(A) - 1) - (ramaMasCorta(A.raiz(), A) -1))
+
+int ramaMasCorta_rec(nodo, A)
+	if(A.hijoIzqd(n) == A.NODO_NULO)
+		return 0
+	else
+		int min = inf
+		nodo hijo = A.hijoIzqdo(n)
+		while (hijo != A.NODO_NULO)
+			mínimo = min(minino, ramaMasCortarec(A.hijoIzqdo(n), n))
+		
+
+Ejercicio 4
+
+Primero hay que buscar el elemento y ya después hacer la poda, si tuviéramos el nodo directamente podríamos hacer el nodo directamente.
+Pasamos el árbol por referencia 
+
+while(A.hijoIzqd(n) != NODO_NULO)
+	destruirNodos(A, A.hijoIzqd(n))
+	A.eliminarHijoIzqdo(n)
+
+Cuando hemos eliminado los subárboles de dGebajo de del nodo n, tendre que eliminar el nodo n y nos encontraremos con 3 opciones: N es hijoIzqdo, hermDrcho o raíz. 
+	
+
+Ejercicio extra - gemelos
+funciones iguales(A, n1, n2) para comprobar que son idénticos en contenido y ramificación
+
+int contarGemelos(A)
+	return contarGemelosRec(A, raíz)
+
+contarGemelosRec(A, n)
+	numgemelos = 0
+	if (n != NODO_NULO)
+		nodo aux = A.hijoIzq(n)
+		nodo aux2
+		if(aux != NULO)
+			aux2 = A.hermDrcho(aux)
+		while (aux != nulo and aux2 != nulo)
+			ngemelos += iguales(A, aux, aux2)
+			ngemelos += contarGemelosRec(A, aux) + contarGEmelosRec(A, aux2)
+			aux2 = A.hermDrech(aux2)
+			if (aux2 == NULO)
+				aux = A.hermDrch(aux)
+				aux2 = A.hermDrch(aux)
+return ngemelos;
+	

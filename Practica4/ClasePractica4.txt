@@ -1,0 +1,28 @@
+Ejercicio 1
+
+No se puede utilizar la operación buscar ya que devuelve una referencia constante, haciendo imposible la poda. 
+Utilizamos el destructor para eliminar y el puntero de la raíz que apunta al subárbol derecho o izquierdo pasa a ser un puntero nullprt (nulo)
+
+
+
+Ejercicio 2
+
+Se nos pide equilibrar el árbol. Podemos crear un nuevo árbol y destruir el anterior
+
+Debemos de usar una estructura auxiliar que nos permita acceder a un elemento n, en este caso, usaremos un vector stl. 
+Hay que tener en cuenta que es un recorrido en inorden, para insertar usaremos (v.push_back(-))
+Iremos insertando la mediana/la mitad del vector en el nuevo árbol, empezando por el elemento central y después yendo a la mitad izquierda y posteriormente a la mitad derecha. 
+
+[5, 7, 8, 10, 11, 12, 17] este vector seguiría este orden: 10 - 7 - 5 - 8 - 12 - 11 - 17 
+
+
+Ejercicio 3 & 4 & 5
+
+Se nos pide construir un TAD CONJUNTO como un ABB ya que igual que los conjuntos un ABB no puede tener elementos repetidos. El ABB estará en los atributos privados el cual debe de estar siempre equilibrado. 
+
+
+Unión: todos los elementos de ambos conjuntos/arboles
+
+Intersección: los elementos que estén en ambos conjuntos/árboles. Para comprobar los elementos que se encuentren en ambos árboles usaremos la operación buscar si no me devuelve un árbol vacío significa que esta el elemento y lo añado para el resultado
+
+Diferencia simétrica: todos los elementos que no se encuentren en al intersección. Para estos elementos usaremos la misma lógica que la intersección pero buscando los elementos que no se encuentren recibiendo un árbol vacío por parte de la operación buscar. 

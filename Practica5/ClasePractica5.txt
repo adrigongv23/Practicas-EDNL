@@ -1,0 +1,57 @@
+Practica 5
+
+Ejercicio 1
+
+Para representar este ejercicio usaremos un Abin en el cual insertaremos los elementos en el orden que nos pide en el enunciado. 
+
+Para eliminarlo tenemos tres casos: 
+
+- caso 1: el nodo es hoja -> lo eliminamos directamente
+- caso 2: el nodo solo tiene un descendiente -> hundimos el nodo hasta que sea hoja cambiando, poniendo a su único hijo en su posición
+- caso 3: el nodo tiene dos descendientes -> hundimos el nodo hasta que sea hoja, pero ahora debemos de poner en el hueco del nodo el hijo con menor valor
+
+
+Ejercicio 4 
+
+Usaremos la idea del grado, pero lo que haremos es recorrer cada nodo viendo su numero de hijos. Podemos utilizar la función int nhijos = NumHijos(A, n) para obtener el numero de hijos. 
+
+En la función que llama a nuestra función comprobamos si es un árbol vacio
+
+bool esTernario = ComprobarTernario(A, n)  //la función ComprobarTernario lo que hace es comprobar si cumple la condición con los numHijos.
+Agen<T>::nodo aux = A.hijoIzqdo(n)
+while (esternario && aux != NODO_NULO)
+	esTernario &= Ternario_rec(A, aux)
+	aux = A.hermDrcho(aux)
+
+return esTernario
+
+Ejercicio 5
+
+Los nodos hojas son los que tienen la letra 
+
+Al primer nodo le corresponde la matriz completa. Ahora como el raíz tiene 4 hijos se divide la matriz en 4 cuadrantes, correspondiendo cada cuadrante a cada nodo hijo. Así iremos haciéndolo cada vez con cada nodo. 
+
+Usaremos un árbol de caracteres
+Caso base: que sea hoja
+Caso general: haremos cuatro llamadas una por cada descendiente que tenemos
+
+if(A.hijoIzqdo(n) != NULO)
+	for(int i = x1; x1 < x2; i++)
+		for (int j = y1; y1 < y2; j++)
+			M[i][j] = A.elementos(n)
+
+A partir de profundidad y altura puedo saber en que cuadrante esta ubicado dicho nodo
+
+Ejercicio 2 & 3
+
+Tendremos que crear un nuevo TAD porque el TAD que tenemos del APO no nos sirve para completar este ejercicio. Tendremos que tener en cuenta que se cumpla la propiedad de completitud del APO
+
+Insertamos el nodo y comprobamos la condición depende de que nivel se inserte el nodo y usaremos la función flotar con ese nodo hasta que se cumpla la condición
+
+Para insertar un numero, lo insertamos en la posición libre, que normalmente es al final. Primero lo que haremos es averiguar el nivel y ver si es par o impar y que regla debe de cumplir. 
+Si no se cumple la comprobación haremos un intercambio con la función flotar. Tras la primera comprobación solo tendremos que comprar el elemento con el abuelo si es el nivel inicial es par y con el padre si el nivel inicial es impar. 
+
+Para la eliminación del máximo, primero debemos de buscar el máximo ver si esta en el hijo izquierdo o derecho. Una vez encontrado lo pondremos en la ultima posición del árbol y lo eliminaremos y pondremos el elemento que estaba en la posición ultima en la posición que ocupaba el máximo. Ahora nos tocaría comprobar que se cumple las reglas por nivel, si no se van cumpliendo iremos hundiendo el elemento. Como en este caso es nivel impar tendremos que comprobar en los nietos, si existen claro. En el momento que existan 3 o mas nietos el máximo estará entre los nietos, pero si tenemos 1 o 2 el máximo estará entre los nietos o el otro hijo del nodo que es una hoja. Si no existiera nietos el máximo estaría entre los hijos. 
+Una vez encontrado el máximo e intercambiado debemos de reordenar el árbol. 
+Esto lo haremos de forma recursiva hasta que el nodo este donde deba de estar y cumpla la propiedad debida. 
+

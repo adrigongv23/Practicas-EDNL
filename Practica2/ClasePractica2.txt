@@ -1,0 +1,54 @@
+EDNL Practica 2
+simil_Abin(A1, A2 Abin)
+	devolver simil_Abinrec(Raiz(A), Raiz(B), A, B)
+
+simil_Abinrec(nodo na, nodo nb, A, B)
+
+Si na == nodo_nulo or nb = nodo_nulo (Condición de parada: uno de los dos nodos es nulo)
+	devolver na = nb (esto devuelve un booleano false si no son iguales y true si lo son)
+	otra opción: devolver na = nodo_nulo and nb = nodo_nulo
+sino
+	devolver simil_Abinrec(hijoIzq(n,A), hijoIzq(n,B), A, B) and simil_Abinrec(hijoDrch(na, A), hijoDRch(nb, B), A, B)
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+Abin reflex_Abin(A abin)
+	B Abin
+	si !vacio(A)
+		añadirRaiz(elementos(Raiz(A), B)
+		reflex_Abinrec(Raiz(A), Raiz(B), A, B) (parámetros A de entrada pero parámetro B entrada/salida, por eso no devolvemos nada)
+	
+	devolver B
+
+Abin reflex_Abinrec(na, nb, A, B)
+	si hijoIzq(na,A) != nodo_nulo
+		añadir hijoDrch(elemento(hijoIzq(na, A)), nb, B)
+		reflex_Abinrec(hijoIzq(na, A), hijoDrch(nb b), A, B))
+	
+	si hijoDrch(na,A) != nodo_nulo
+		añadir hijoIzq(elemento(hijoDrch(na, A)), nb, B)
+		reflex_Abinrec(hijoDrch(na, A), hijoIzq(nb b), A, B))
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+real eval_Arit(A Abin)
+	devolver eval_AritRec (Raiz(A), A)
+
+real eval_AritRec(n, A)
+si hoja(n, A)
+	devolver elemento(n, A).operando
+si no
+	segun_sea elemento(n, A).operador
+		"+": devolver eval_AritRec(hijoIzq(n, A), A) + eval_Arit(hijoDrch(n, A), A)
+		"-": devolver eval_AritRec(hijoIzq(n, A), A) - eval_Arit(hijoDrch(n, A), A)
+		"/": devolver eval_AritRec(hijoIzq(n, A), A) / eval_Arit(hijoDrch(n, A), A)
+		"*": devolver eval_AritRec(hijoIzq(n, A), A) * eval_Arit(hijoDrch(n, A), A)
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+Parecida a la representación de posiciones relativas pero los nodos se guardan en el vector siguiendo un inorden
+
+Altura máxima de un nodo, no es lo mismo que la altura del árbol por ejemplo altura del árbol es 4, la altura máxima de la raíz es 4 pero la altura máxima del hijo izquierdo de la raíz es 3. El calculo de la altura máxima es altura del árbol - profundidad del nodo
+
+búsqueda dicotomica, sin llamar al padre

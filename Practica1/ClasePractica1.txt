@@ -1,0 +1,81 @@
+EDNL Practica 1.
+
+1. Función que recibe un árbol con referencia constante ya que no se va a modificar el árbol. También tendremos una función recursiva para recorrer el árbol
+
+	int main(){
+		Abin<tElto> A;
+		ifstream fe("A.dat"); //Creamos un archivo con el árbol
+		rellenarAbin(fe, A);
+		fe.close()
+		getTreeImage(A, "EJ1);
+		std::cout << NumNodos(A) << std::endl;
+	
+	int numNodos(const Abin<T>& A) 
+	int numNodos_rec (const Abin<T>& A, typename Abin<T>::nodo n)
+
+Para contar los nodos haremos 1 + lo que haya en el subárbol derecho + lo que haya en el subárbol derecho asi con cada nodo, es decir 1 + dos llamadas recursivas
+
+Tendremos que comprobar si tengo un nodo nulo y devolvemos 0 
+
+if (n == Abin<T>::NODO_NULO)
+	return 0
+else:
+	1 + numNodos_rec(A, A.hijoIzq(n)) + numNodos_rec(A, A.hijoDrch(n))
+
+
+2. Nodo nulo tiene altura de -1 y el nodo raíz tiene altura de 0 (esto se puede comprobar con el código de abajo imponiendo el calculo de la altura del nodo raíz)
+
+Tendremos que ir por las dos ramas y comparar las alturas de los dos subárboles quedándome con el max 
+	1 + max (altura.subArbolIzq, altura.subArbolDrch)
+
+	int altura(const Abin<T>& A)
+	int altura_rec(const Abin<T>& A, typename Abin<T>::nodo n)
+
+if (n == Abin<T>::NODO_NULO)
+	return -1
+else
+	1 + max (altura_rec(A, A.hijoIzq(n)), altura_rec(A, A.hijoDrch(n)));
+
+Para compilar g++ Altura.cpp -o Altura
+y después ./Altura
+
+3. Ahora partimos de que recibimos el árbol y un nodo y queremos calcular la profundidad del nodo, llegando a la raíz. 
+
+Usaremos la función A.padre y tendremos como caso base si A.padres(n) == NODO_NULO o A.padre(n) == A.raiz() o n == NODO_NULO o n == A.raiz() podemos escoger cualquiera de las opciones pero hay que tener en cuenta que cada una devuelve cosas diferentes.
+
+Profundidad de la raíz es 0 
+
+Iter. 
+prof = 0
+while (n!=A.raiz())
+	prof = prof + 1
+	n = A.padre(n)
+
+4 & 5. 
+Caso vectorial profundidad: usaremos la parte privada concretamente la estrucutra celda, nodo[n].padre, en vez de usar las operaciones del tad. Y la altura sera con nodos[n].hizq o nodos[n].hder
+
+
+6. Tenemos que usar la altura para ayudarnos a calcular el desequilibrio. 
+Hay que tener en cuenta el desquilibrio de un nodo y el desquilibrio de sus subarboles
+Siempre se restará el desequilibrio del subarbol izquierdo menos el del subarbol derecho pero aplicando valor absoluto (abs)
+
+Para calcular el desiquilibrio de un nodo iremos del nodo más abajo de cada subarbol y después restaremos sus alturas
+
+desiquilibrio max (desquilibrio del hijoder, desiquilibrio del hijoizq, abs(alturaizq - altura der))
+
+7. Tenemos que comprobar si en un nodo la altura del arbol - la profundidad del nodo = 1, si estamos en ese caso comprobar si el numero de hijos es distinto de 1 (0 o 1) y devolvemos true si es igual a 1 devolvemos false
+
+Tres posibles escenarios: 
+- Solo nodo raiz: es pseudocompleto y devuelvo true (no tengo penultimo nivel, ahora se resolverá con el codigo)
+- Solo tengo el raiz y un nivel adiccional: comprobar si tengo 1 hijo, 2 hijos o ninguno.
+
+bool esPseudoCompleto(Abin<T> A){
+	if(A.arbolVacio())
+		return false
+	else
+		return esPseudoCompleto_rec(A.raiz(), A, getAltura(A)
+
+bool esPseudoCompleto_rec(Abin<T>::nodo n, Abin<T> A, int altura)
+Si no entra en el caso base ni en el else ponemos un true para evitar problemas de otras ramas.
+
+

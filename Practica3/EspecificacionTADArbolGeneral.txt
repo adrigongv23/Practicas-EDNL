@@ -1,0 +1,63 @@
+Árbol general: un árbol cuyos nodos son de cualquier grado, es decir, pueden tener un número cualquiera de hijos. Los hijos de un nodo están ordenados de izquierda a derecha, de tal forma que el primer hijo de un nodo se llama hijo izquierdo, el segundo es el hermano derecho de éste, el tercero es el hermano derecho del segundo y así sucesivamente. 
+
+
+
+Especificación de operaciones:
+ 
+- Agen()
+	Post: Construye un árbol vacío
+
+- void insertarRaiz (const T& e)
+ 	Pre: El árbol está vacío.
+ 	Post: Inserta el nodo raíz de A cuyo contenido será e.
+
+- void insertarHijoIzqdo(nodo n, const T& e)
+ 	Pre: n es un nodo del árbol.
+ 	Post: Inserta el elemento e como hijo izquierdo del nodo n. Si ya existe hijo
+	izquierdo, éste se convierte en el hermano derecho del nuevo nodo.
+
+- void insertarHermDrcho(nodo n, const T& e)
+ 	Pre: n es un nodo del árbol y no es el nodo raíz.
+ 	Post: Inserta el elemento e como hermano derecho del nodo n del árbol.
+	Si ya existe hermano derecho, éste se convierte en el hermano derecho del nuevo 	nodo.
+
+- void eliminarHijoIzqdo(nodo n)
+ 	Pre: n es un nodo del árbol. Existe hijoIzqdo(n) y es una hoja.
+ 	Post: Destruye el hijo izquierdo del nodo n. El segundo hijo, si existe, se 	convierte en el nuevo hijo izquierdo de n.
+
+- void eliminarHermDrcho(nodo n)
+ 	Pre: n es un nodo del árbol. Existe hermDrcho(n) y es una hoja.
+ 	Post: Destruye el hermano derecho del nodo n. El siguiente hermano se convierte en 	el nuevo hermano derecho de n.
+
+- void eliminarRaiz()
+ 	Pre: El árbol no está vacío y raiz() es una hoja.
+ 	Post: Destruye el nodo raíz. El árbol queda vacío.
+
+- bool vacio () const
+ 	Post: Devuelve true si el árbol está vacío y false en caso contrario.
+
+- size_t tama () const
+ 	Post: Devuelve el número de elementos que contiene el árbol.
+
+- const T& elemento(nodo n) const
+  const T& elemento(nodo n)
+ 	Pre: n es un nodo del árbol.
+ 	Post: Devuelve el elemento del nodo n.
+
+- nodo raiz() const
+ 	Post: Devuelve el nodo raíz del árbol. Si el árbol está vacío, devuelve NODO_NULO.
+
+- nodo padre(nodo n) const
+ 	Pre: n es un nodo del árbol.
+ 	Post: Devuelve el padre del nodo n. Si n es el nodo raíz, devuelve NODO_NULO.
+
+- nodo hijoIzqdo(nodo n) const
+ 	Pre: n es un nodo del árbol.
+ 	Post: Devuelve el hijo izquierdo del nodo n. Si no existe, devuelve NODO_NULO.
+
+- nodo hermDrcho(nodo n) const
+ 	Pre: n es un nodo del árbol.
+ 	Post: Devuelve el hermano derecho del nodo n. Si no existe, devuelve NODO_NULO. 
+
+
+
