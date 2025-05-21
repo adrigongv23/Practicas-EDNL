@@ -1,0 +1,48 @@
+pipeline {
+    agent {
+        docker {
+            image 'hseeberger/scala-sbt:11.0.17_1.9.6_3.3.1'
+            args '-v /root/.ivy2:/root/.ivy2' //cache de dependencias
+        }
+    }
+
+    environment {
+        PROJECT_DIR = "temas/abstraccion/scala/abstraccion-pagos"
+    }
+
+    stages {
+        stage('Limpiar') {
+            steps {
+                dir("${env.PROJECT_DIR}") {
+                    sh 'sbt clean'
+                }
+            }
+        }
+
+        stage('Compilar') {
+            steps {
+                dir("${env.PROJECT_DIR}") {
+                    sh 'sbt compile'
+                }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                dir("${env.PROJECT_DIR}") {
+                    sh 'sbt test'
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo ' Build finalizado correctamente.'
+        }
+        failure {
+            echo ' Ha fallado alguna etapa del build.'
+        }
+    }
+}
+
