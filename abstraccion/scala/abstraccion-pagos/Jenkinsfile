@@ -1,8 +1,8 @@
 pipeline {
     agent {
         docker {
-            image 'hseeberger/scala-sbt:11.0.13_1.5.5_2.13.8'
-            args '-v /root/.ivy2:/root/.ivy2'  // Cache de dependencias (opcional)
+            image 'sbtscala/scala-sbt:eclipse-temurin-11.0.14.1_1.6.2_2.13.8'
+            args '-v /root/.ivy2:/root/.ivy2' // Cache de dependencias
         }
     }
 
@@ -38,10 +38,10 @@ pipeline {
 
     post {
         success {
-            echo '✅ Build finalizado correctamente.'
+            echo 'Build finalizado correctamente.'
         }
         failure {
-            echo '❌ Ha fallado alguna etapa del build.'
+            echo 'Ha fallado alguna etapa del build.'
         }
     }
 }
